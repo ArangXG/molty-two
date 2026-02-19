@@ -1,0 +1,18 @@
+[Unit]
+Description=Molty Royale AI Agent Bot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/home/ubuntu/molty_agent
+EnvironmentFile=/home/ubuntu/molty_agent/.env
+ExecStart=/home/ubuntu/molty_agent/venv/bin/python3 bot.py
+Restart=always
+RestartSec=10
+StandardOutput=append:/home/ubuntu/molty_agent/logs/service.log
+StandardError=append:/home/ubuntu/molty_agent/logs/service.log
+
+[Install]
+WantedBy=multi-user.target
